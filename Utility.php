@@ -30,7 +30,6 @@
             $t=0;
             echo "enter n: ";
             $n = trim(fgets(STDIN));
-            
             $n = filter_var($n,FILTER_VALIDATE_INT);
             for($i = 0;$i<$n;$i++)
             {
@@ -48,8 +47,24 @@
             echo ($t/($h+$t))*100;
             echo "% tail"."\n";
        }
+       function LeapYear()
+       {
+           $yr = trim(fgets(STDIN,4));
+           $yr = filter_var($yr,FILTER_VALIDATE_INT);
+
+            if ($yr % 4 == 0 || $yr % 100 == 0 || $yr % 400 == 0) 
+            {
+               echo " is leap year";
+            } 
+            else 
+            {
+                echo " is not leap year";
+            }
+       }
    }
+
+  
    $o = new Utility();
-   $o->flipCoin();
+   $o->LeapYear();
 
 ?>
