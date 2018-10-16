@@ -1,33 +1,17 @@
 <?php
-    function addsToZero()
+    /**
+     * addsZero take intput form user the size of array and the element of array
+     */
+    require("Utility.php");
+    echo "enter total number you want to enter"."\n";
+    $n = Utility::getInt();
+    $arr = array();           
+    echo "\n"."enter values"."\n";
+    //for loop to get value form user and save it into array
+    for($in = 0;$in < $n;$in++)
     {
-        echo "enter total number you want to enter"."\n";
-        $arr = array();
-        $n = Utility::getInt();
-        echo "\n"."enter values"."\n";
-        for($in = 0;$in < $n;$in++)
-        {
-            $arr[$in] = Utility::getInt();
-        }
-
-        $count = 0;
-
-        for($i = 0; $i < $n; $i++)
-        {
-            for($j = $i + 1; $j < $n; $j++)
-            {
-                for($j2 = $j + 1; $j2 < $n; $j2++)
-                {
-                    if($arr[$i]+$arr[$j]+$arr[$j2]==0)
-                    {
-                        echo $arr[$i]." + ".$arr[$j]." + ".$arr[$j2]." = 0"."\n";
-                        $count++;
-                    }
-
-                }
-            }
-        }
-        echo "total sum ".$count;
+        $arr[$in] = Utility::getInt();
     }
-    addsToZero();
+    //addsToZero is function of Utility class use take array as perametre 
+    Utility::addsToZero($arr);
 ?>

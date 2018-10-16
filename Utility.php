@@ -12,7 +12,7 @@
         * replaceF function is use to take user name is replace tha "<<UserName>>"
         * template to the nam of the user
         */
-       function replaceF()
+       static function replaceF()
        {
             $template = "Hello <<UserName>>, How are you?";
             $S = readline("enter name : ");
@@ -23,69 +23,58 @@
        /**
         * flipCoin function take input the number of times to flip Coin.
         * and print percent of head and tail.
+        * @param $n number of time user want to flip coin
         */
-       function flipCoin()
+       static function flipCoin($n)
        {    
            //h and t to count head and tails.
             $h=0;
             $t=0;
-            echo "enter n: ";
-            $n = trim(fgets(STDIN));
-            $n = filter_var($n,FILTER_VALIDATE_INT);
-            if(is_numeric($n))
+            
+            for($i = 0;$i<$n;$i++)
             {
-                for($i = 0;$i<$n;$i++)
+                if (random_int(0,1)==1) 
                 {
-                    if (random_int(0,1)==1) 
-                    {
-                        $t++;
-                    } 
-                    else 
-                    {
-                        $h++;
-                    }
+                    $t++;
+                } 
+                else 
+                {
+                    $h++;
                 }
-                echo ($h/($h+$t))*100;
-                echo "% head"."\n";
-                echo ($t/($h+$t))*100;
-                echo "% tail"."\n";
             }
-            else
-            {
-                echo "enter valid value"."\n";
-                Utility::flipCoin();
-            }
+            echo ($h/($h+$t))*100;
+            echo "% head"."\n";
+            echo ($t/($h+$t))*100;
+            echo "% tail"."\n";
        }
        
        /**function leapYear is use to check the year is leap year or not it 
         * take input form use and print year is leap or not 
+        *
+        * @param $n is year which we want ot check leap year or not  
         */
-       function leapYear()
+       static function leapYear($n)
        {
-           echo "enter year"."\n";
-           //take input from user 
-           $yr = (int) trim(fgets(STDIN,5));
-           
-            if (strlen((string)$yr)==4) {
+            if (strlen((string)$n)==4) 
+            {
                 //check year is leap or not
-                if ((($yr % 4 == 0) && ($yr % 100 != 0)) || ($yr % 400 == 0)) 
+                if ((($n % 4 == 0) && ($n % 100 != 0)) || ($n % 400 == 0)) 
                 {
                 echo "leap year"."\n";
                 } 
                 else 
                 {
                     echo "not leap year"."\n";
-                }
-               
-            } else {
-                echo "enter valid input"."\n";
-                Utility::leapYear();
-            }
-            
+                }   
+            }  
+            else
+            {
+                echo "invalid input"."\n";
+            }                                
        }
 
        /**function powerOfTwo */
-       function powerOfTwo()
+       static function powerOfTwo()
        {    echo "enter value"."\n";
            $n = (int) trim(fgets(STDIN));
            if ($n >= 0 && $n < 31) {
@@ -104,7 +93,7 @@
            
        } 
 
-       function harmonicNumber()
+       static function harmonicNumber()
        {
             echo "enter value"."\n";
             $n = Utility::getInt();
@@ -115,16 +104,27 @@
             }
             echo $sum."\n";
        }
+
+       /**
+        * function factor is to find the all prime factors of any number 
+        * and print the values 
+        * @param $n to get prime factor of number 
+        * 
+        */
       
-       function factors()
-       {    echo "enter value"."\n";
-           $n = Utility::getInt();
+       static function factors($n)
+       {    
+           //array to store the prime factors of number            
            $arr = array();
+           //starting of prime factors
            $i = 2;
            $index = 0;
+           //while loop until we get 1 
            while($n != 1)
            {
+               //$b is boolean value to check the number is prime or not
                $b = true;
+               //for loop to get prime number one by one
                for($j = 2; $j < $i/2; $j++)
                {
                    if($i % $j == 0)
@@ -133,6 +133,8 @@
                        break;
                    }
                }
+               //if number is prime then is will check how many time that prime number 
+               //is deided by n 
                if($b)
                {
                    while($n % $i == 0)
@@ -141,9 +143,11 @@
                        $n = $n / $i;
                    }
                }
+               //i++ to get next number which we want to check prime ot not 
                 $i++;
            }
 
+           //forEach to print all prime factors 
            foreach($arr as $print)
            {
                echo $print."\n";
@@ -151,24 +155,26 @@
            }
        }
 
-       function gambler()
+       /**
+        * function gambler is use to take input form user and gamble 
+        * the stack until user win of user lost all money
+
+        * @param $stack total amount user have 
+        * @param $goal how much he want to win
+        * @param $n number of time he gamble his stack
+        */
+
+       static function gambler($stake,$goal,$n)
        {    
            $win = 0;
-           $count = 0;
-
-           echo "enter stack"."\n";
-           $stake = Utility::getInt();
-           echo "\n"."enter goal"."\n";
-           $goal = Utility::getInt();
-           echo "\n"."enter number of times"."\n";
-           $n = Utility::getInt();
-            
+           //$count = 0;
            for($i = 0;$i < $n; $i++)
            {
                $temp = $stake;
+               //while loop until user win or loss all stack 
                 while($temp != $goal && $temp != 0)
                 {
-                    $count++;
+                    //$count++;
                     if ((random_int(0,1))==1) 
                     {
                        $temp++;
@@ -186,12 +192,12 @@
 
            }
            echo "no of win ".$win."\n";
-           echo "count ".$count."\n";
+           //echo "count ".$count."\n";
            echo "win percentage ".(($win/$n)*100)."%"."\n";
            echo "loss percentage ".((($n-$win)/$n)*100)."%"."\n";
        }
 
-       public function getInt()
+       static public function getInt()
        {
             fscanf(STDIN,"%d\n",$n);
             while(!is_numeric($n))
@@ -202,33 +208,41 @@
             return $n;     
        }
 
-       function couponNumbers()
-       {
+       /**
+        * function couponNumber is to generate n number of coupon number 
+        * 
+        * @param $n number of coupon user want  
+        */
+       static function couponNumbers($n)
+       {    
+           //array to save the coupon
            $arr = array();
-           echo "enter number of coupon yoou want"."\n";
-           $n = Utility::getInt();
-           $i = 0;
+           //$i = 0;
+           //count to count the number of thime rendom number generated
            $count = 0;
+           //index to change the index of array
            $index = 0;
+           //while loop until use get n number of coupon
            while(sizeof($arr) != $n)
            {
                $count++;
                $num = random_int(10,($n+100));
+               //if condition to check the coupon use unique or not
                if(!array_search("cou".$num."pon",$arr))
                {
                    $arr[$index++] = ("cou".$num."pon");
                }
            }
 
+           //no of time coupon generated
            echo "count ".$count."\n";
-
+           //unique coupon
            foreach ($arr as $print) {
                echo $print."\n";
            }
-
        }
 
-       function twoDArray()
+       static function twoDArray()
        {
            echo "enter row size"."\n";
            $m = Utility::getInt();
@@ -258,49 +272,48 @@
            }
        }
 
-       public function addsToZero()
+       /**
+        * funtion addsToZero to check the the sum of three value in array is zero or not
+        *
+        * @param $arr array in which we want to check the sum of value is zero or not 
+        */
+       static function addsToZero($arr)
        {
-           echo "enter total number you want to enter"."\n";
-           $arr = array();
-           $n = Utility::getInt();
-           echo "\n"."enter values"."\n";
-           for($in = 0;$in < $n;$in++)
-           {
-               $arr[$in] = Utility::getInt();
-           }
-
+           //count to check no of total values 
            $count = 0;
-
-           for($i = 0; $i < $n; $i++)
+           // three nested for loop to take three values 
+           for($i = 0; $i < sizeof($arr); $i++)
            {
-               for($j = $i + 1; $j < $n; $j++)
+               for($j = $i + 1; $j < sizeof($arr); $j++)
                {
-                   for($j2 = $j + 1; $j2 < $n; $j2++)
+                   for($j2 = $j + 1; $j2 < sizeof($arr); $j2++)
                    {
                        if($arr[$i]+$arr[$j]+$arr[$j2]==0)
                        {
+                           //values which sum is zero
                            echo $arr[$i]." + ".$arr[$j]." + ".$arr[$j2]." = 0"."\n";
                            $count++;
                        }
-
                    }
                }
            }
-
+           //total no of zero sum
            echo "total sum ".$count;
-
        }
 
-       function distance()
+       /**
+        * function distance is use to claculate the distance of x and y for 0,0
+        * @param $x is x coordinate 
+        * @param $y is y coordinate
+        * @return distance from zero
+        */
+
+       static function distance($x,$y)
        {
-           echo "enter x"."\n";
-           $x = Utility::getInt();
-           echo "enter y"."\n";
-           $y = Utility::getInt();
-           echo sqrt(($x*$x) +($y*$y));
+           return sqrt(($x*$x) +($y*$y));
        }
 
-       function stopWatch()
+       static function stopWatch()
        {
            $st = 0; $sp = 0;
            echo "press 1 to start watch"."\n"."press 2 to stop watch"."\n";
