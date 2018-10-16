@@ -185,7 +185,6 @@
                 }
 
            }
-
            echo "no of win ".$win."\n";
            echo "count ".$count."\n";
            echo "win percentage ".(($win/$n)*100)."%"."\n";
