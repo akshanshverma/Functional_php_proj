@@ -1,14 +1,11 @@
 <?php
-    function harmonicNumber()
-    {
-         echo "enter value"."\n";
-         $n = Utility::getInt();
-         $sum = 0;
-         for($i = 1; $i <= $n; $i++)
-         {
-             $sum += 1/$i;
-         }
-         echo $sum."\n";
-    }
-    harmonicNumber();
+    /**
+     * harmonicNumber is for user input of n number 
+     */
+    require("Utility.php");
+    echo "enter value to find harmonic number"."\n";
+    $nInt = Utility::getInt();
+    //call function harmonic number to get sum of n number 
+    Utility::harmonicNumber($nInt);
+    
 ?>

@@ -11,11 +11,11 @@
        /**
         * replaceF function is use to take user name is replace tha "<<UserName>>"
         * template to the nam of the user
+        * @* @param $S to give function string value which we want to replace 
         */
-       static function replaceF()
+       static function replaceF($S)
        {
             $template = "Hello <<UserName>>, How are you?";
-            $S = readline("enter name : ");
             //str_replace to replace  <<UserName>> from template
             echo str_replace("<<UserName>>", $S , $template)."\n";
        }
@@ -73,10 +73,14 @@
             }                                
        }
 
-       /**function powerOfTwo */
-       static function powerOfTwo()
-       {    echo "enter value"."\n";
-           $n = (int) trim(fgets(STDIN));
+       /**
+        * funcction powerOfTwo is use to take the number and give 
+        * output form one to n number of 2^n
+        * @* @param $n to take number until we want power of two
+        */
+
+       static function powerOfTwo($n)
+       {   
            if ($n >= 0 && $n < 31) {
                $pow = 2**$n;
                $all = 0; $count = 1;
@@ -93,10 +97,16 @@
            
        } 
 
-       static function harmonicNumber()
+        /**
+        * function harmonicNumber is a function which calculate the sum of factorial 
+        * of n number
+        *
+        * @param $n number is a number until we need harmonic value
+        */
+
+       static function harmonicNumber($n)
        {
-            echo "enter value"."\n";
-            $n = Utility::getInt();
+            //sum is use to save the total sum of n value
             $sum = 0;
             for($i = 1; $i <= $n; $i++)
             {
@@ -197,6 +207,11 @@
            echo "loss percentage ".((($n-$win)/$n)*100)."%"."\n";
        }
 
+       /**
+        * function getInt is method which take user input and 
+        * check the input is numeric or not
+        * @return $n int type value
+        */
        static public function getInt()
        {
             fscanf(STDIN,"%d\n",$n);
@@ -242,35 +257,35 @@
            }
        }
 
-       static function twoDArray()
-       {
-           echo "enter row size"."\n";
-           $m = Utility::getInt();
-           echo "\n"."enter colums size"."\n";
-           $n = Utility::getInt();
-           $arr = array();
-           echo "enter valus"."\n";
+    //    static function twoDArray()
+    //    {
+    //        echo "enter row size"."\n";
+    //        $m = Utility::getInt();
+    //        echo "\n"."enter colums size"."\n";
+    //        $n = Utility::getInt();
+    //        $arr = array();
+    //        echo "enter valus"."\n";
 
-           for($i = 0;$i < $m; $i++)
-           {
-               $iArr = array();
-               for($j = 0; $j < $n ;$j++ )
-               {
-                   $iArr[$j] = trim(fgets(STDIN));
-               } 
-               array_push($arr,$iArr);
-           }
+    //        for($i = 0;$i < $m; $i++)
+    //        {
+    //            $iArr = array();
+    //            for($j = 0; $j < $n ;$j++ )
+    //            {
+    //                $iArr[$j] = trim(fgets(STDIN));
+    //            } 
+    //            array_push($arr,$iArr);
+    //        }
 
 
-           for($i = 0;$i < $m; $i++)
-           {
-               for($j = 0; $j < $n ;$j++ )
-               {
-                   echo $arr[$i][$j]." ";
-               }
-               echo "\n";
-           }
-       }
+    //        for($i = 0;$i < $m; $i++)
+    //        {
+    //            for($j = 0; $j < $n ;$j++ )
+    //            {
+    //                echo $arr[$i][$j]." ";
+    //            }
+    //            echo "\n";
+    //        }
+    //    }
 
        /**
         * funtion addsToZero to check the the sum of three value in array is zero or not
@@ -307,13 +322,12 @@
         * @param $y is y coordinate
         * @return distance from zero
         */
-
        static function distance($x,$y)
        {
            return sqrt(($x*$x) +($y*$y));
        }
 
-       static function stopWatch()
+       /*static function stopWatch()
        {
            $st = 0; $sp = 0;
            echo "press 1 to start watch"."\n"."press 2 to stop watch"."\n";
@@ -330,7 +344,7 @@
 
            echo ($sp - $st)." sec";
            
-       }
+       }*/
 
        
    }
