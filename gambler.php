@@ -5,6 +5,10 @@
     $stake = Utility::getInt();
     echo "\n"."enter goal"."\n";
     $goal = Utility::getInt();
+    while ($goal < $stck) {
+        echo "enter goal value bigger then stack\n";
+        $goal = Utility::getInt();
+    }
     echo "\n"."enter number of times"."\n";
     $n = Utility::getInt();
     Utility::gambler($stake,$goal,$n);

@@ -177,14 +177,14 @@
        static function gambler($stake,$goal,$n)
        {    
            $win = 0;
-           //$count = 0;
+           $count = 0;
            for($i = 0;$i < $n; $i++)
            {
                $temp = $stake;
                //while loop until user win or loss all stack 
                 while($temp != $goal && $temp != 0)
                 {
-                    //$count++;
+                    $count++;
                     if ((random_int(0,1))==1) 
                     {
                        $temp++;
@@ -202,7 +202,7 @@
 
            }
            echo "no of win ".$win."\n";
-           //echo "count ".$count."\n";
+           echo "count ".$count."\n";
            echo "win percentage ".(($win/$n)*100)."%"."\n";
            echo "loss percentage ".((($n-$win)/$n)*100)."%"."\n";
        }
