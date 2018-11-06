@@ -5,7 +5,7 @@
     $stake = Utility::getInt();
     echo "\n"."enter goal"."\n";
     $goal = Utility::getInt();
-    while ($goal < $stck) {
+    while ($goal < $stake) {
         echo "enter goal value bigger then stack\n";
         $goal = Utility::getInt();
     }

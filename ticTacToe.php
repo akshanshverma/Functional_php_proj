@@ -172,6 +172,7 @@
                 if(TicTacToe::tCase(TicTacToe::$game))
                 {
                     echo "user win "."\n";
+                    break;
                 }
                 // in every turn if check computer win or not
                 if (TicTacToe::tCaseC(TicTacToe::$game)) {

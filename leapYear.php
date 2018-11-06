@@ -4,10 +4,11 @@
     echo "enter year"."\n";
     //take input from user 
     $yr = Utility::getInt();
-    if (Utility::leapYear($yr)) {
-       echo "yes\n";
-    } else {
-        echo "no\n";
-    }
+    Utility::leapYear($yr);
+    // if (!Utility::leapYear($yr)) {
+    //    echo "yes\n";
+    // } else {
+    //     echo "no\n";
+    // }
     
 ?>
